@@ -1,0 +1,133 @@
+<h1>Gerenciamento Acadêmico</h1>
+
+<div class="sectionAlunos">
+  <h2>Gerenciamento de Alunos</h2>
+
+  <div id="form-alunos">
+    <h3>Cadastrar Aluno</h3>
+    <div>
+      <label for="matricula">Matrícula:</label>
+      <input type="number" [(ngModel)]="aluno.matricula" required>
+    </div>
+    <div>
+      <label for="nome">Nome:</label>
+      <input type="text" [(ngModel)]="aluno.nome" required>
+    </div>
+    <div>
+      <label for="nascimento">Data de Nascimento:</label>
+      <input type="date" [(ngModel)]="aluno.dataNascimento" required>
+    </div>
+    <div>
+      <label for="turma">Turma:</label>
+      <input type="text" [(ngModel)]="aluno.turma" required>
+    </div>
+    <button (click)="adicionarAluno()">Adicionar Aluno</button>
+  </div>
+
+  <div>
+    <h3>Excluir Aluno</h3>
+    <input type="number" placeholder="Matrícula do Aluno" [(ngModel)]="matriculaParaExcluir">
+    <button (click)="deletarAlunoPorId()">Excluir Aluno</button>
+  </div>
+
+  <div id="lista-alunos">
+    <h3>Lista de Alunos</h3>
+    <div *ngFor="let aluno of alunos" class="item">
+      <p>
+        Matrícula: {{ aluno.matricula }}, Nome: {{ aluno.nome }},  Data de Nascimento: {{ aluno.dataNascimento }},  Turma: {{ aluno.turma }}
+      </p>
+      <button (click)="editarAluno(aluno)">Editar</button>
+
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<div id="professores-section">
+  <h2>Gerenciamento de Professores</h2>
+
+  <div id="form-professores">
+    <h3>Cadastrar Professor</h3>
+    <div>
+      <label for="id">ID:</label>
+      <input type="number" [(ngModel)]="professor.id" required>
+    </div>
+    <div>
+      <label for="nome">Nome:</label>
+      <input type="text" [(ngModel)]="professor.nome" required>
+    </div>
+    <div>
+      <label for="area">Área de Atuação:</label>
+      <input type="text" [(ngModel)]="professor.areaAtuacao" required>
+    </div>
+    <div>
+      <label for="telefone">Telefone:</label>
+      <input type="tel" [(ngModel)]="professor.telefone" required>
+    </div>
+    <button (click)="adicionarProfessor()">Adicionar Professor</button>
+  </div>
+
+  <div>
+    <h3>Excluir Professor</h3>
+    <input type="number" placeholder="ID do Professor" [(ngModel)]="idProfessorParaExcluir">
+    <button (click)="deletarProfessorPorId()">Excluir Professor</button>
+  </div>
+
+  <div id="lista-professores">
+    <h3>Lista de Professores</h3>
+    <div *ngFor="let professor of professores" class="item">
+      <p>
+        ID: {{ professor.id }}, Nome: {{ professor.nome }}, Área: {{ professor.areaAtuacao }}, Telefone: {{ professor.telefone }}
+      </p>
+      <button (click)="editarProfessor(professor)">Editar</button>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<div id="turmas-section">
+  <h2>Gerenciamento de Turmas</h2>
+
+  <div id="form-turmas">
+    <h3>Cadastrar Turma</h3>
+    <div>
+      <label for="codigo">Código da Turma:</label>
+      <input type="text" [(ngModel)]="turma.codigo" required>
+    </div>
+    <div>
+      <label for="nome">Nome da Turma:</label>
+      <input type="text" [(ngModel)]="turma.nome" required>
+    </div>
+    <div>
+      <label for="periodo">Período:</label>
+      <select [(ngModel)]="turma.periodo" required>
+        <option value="Manhã">Manhã</option>
+        <option value="Tarde">Tarde</option>
+        <option value="Noite">Noite</option>
+      </select>
+    </div>
+    <div>
+      <label for="idProfessor">ID do Professor:</label>
+      <input type="number" [(ngModel)]="turma.idProfessor" required>
+    </div>
+    <button (click)="adicionarTurma()">Adicionar Turma</button>
+  </div>
+
+  <div>
+    <h3>Excluir Turma</h3>
+    <input type="text" placeholder="Código da Turma" [(ngModel)]="codigoTurmaParaExcluir">
+    <button (click)="deletarTurmaPorId()">Excluir Turma</button>
+  </div>
+
+  <div id="lista-turmas">
+    <h3>Lista de Turmas</h3>
+    <div *ngFor="let turma of turmas" class="item">
+      <p>
+        Código: {{ turma.codigo }}, Nome: {{ turma.nome }}, Período: {{ turma.periodo }}, Professor: {{ turma.idProfessor }}
+      </p>
+      <button (click)="editarTurma(turma)">Editar</button>
+    </div>
+  </div>
+</div>
